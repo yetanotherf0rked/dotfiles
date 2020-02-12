@@ -63,7 +63,7 @@ set errorbells
     map <C-c> :Gcommit -m "<CR> 
     map <C-p> :Gpush<CR>
     map <C-P> :Gpull<CR>    
-" test    
+" te2st    
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
