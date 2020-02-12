@@ -64,3 +64,4 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
 call plug#end()
+" testMyThing()
