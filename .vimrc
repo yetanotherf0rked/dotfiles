@@ -40,15 +40,29 @@ set undofile
 set visualbell
 set errorbells
 
+" For NERDTree
+    " Automatically opens NERDTree if no files are specified
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    " Automatically opens NERDTree when opening a directory
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
 " For NERDCommenter
-filetype plugin on
+    filetype plugin on
 
 " For Git-Gutter
-set updatetime=100
-highlight GitGutterAdd    guifg=#009900 ctermfg=2 
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+    set updatetime=100
+    highlight GitGutterAdd    guifg=#009900 ctermfg=2 
+    highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+    highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
+" Mappings
+    map <C-t> :NERDTreeToggle<CR>
+    map <C-a> :Gwrite %<CR>
+    map <C-c> :Gcommit
+    map <C-p> :GPush
+        
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -64,4 +78,3 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
 call plug#end()
-" testMyThing()
