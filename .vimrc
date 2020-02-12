@@ -2,7 +2,7 @@
 syntax on
 set wrap
 set linebreak
-"test
+
 " Indentation & Tabs
 set autoindent
 set smartindent
@@ -62,6 +62,7 @@ set errorbells
     nmap <C-a> :Gwrite %<CR>
     nmap <C-c> :Gcommit -m "
     nmap <C-p> :Gpush<CR>
+    nmap <C-l> :Gpull<CR>
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
     
