@@ -63,7 +63,9 @@ set errorbells
     map <C-c> :Gcommit -m "
     map <C-p> :Gpush<CR>
     map <C-P> :Gpull<CR>    
-    
+    nmap <F9> :SCCompile<cr>
+    nmap <F10> :SCCompileRun<cr>     
+
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -78,4 +80,5 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
+Plug 'xuhdev/singlecompile'
 call plug#end()
