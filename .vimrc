@@ -61,7 +61,7 @@ set errorbells
     map <C-t> :NERDTreeToggle<CR>
     map <C-a> :Gwrite %<CR>
     map <C-c> :Gcommit -m "
-    map <C-p> :git push<CR>
+    map <C-p> :ter git push<CR>
     map <C-P> :Gpull<CR>    
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
