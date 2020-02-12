@@ -65,7 +65,7 @@ set errorbells
     map <C-P> :Gpull<CR>    
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
-
+"test
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
