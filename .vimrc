@@ -60,7 +60,7 @@ set errorbells
 " Mappings
     map <C-t> :NERDTreeToggle<CR>
     map <C-a> :Gwrite %<CR>
-    map <C-c> :Gcommit<CR> 
+    map <C-c> :Gcommit -m "<CR> 
     map <C-p> :Gpush<CR>
     map <C-P> :Gpull<CR>    
     
