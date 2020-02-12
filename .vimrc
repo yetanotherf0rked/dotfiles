@@ -61,8 +61,7 @@ set errorbells
     nmap <C-t> :NERDTreeToggle<CR>
     nmap <C-a> :Gwrite %<CR>
     nmap <C-c> :Gcommit -m "
-    nmap <C-p> :ter echo "hey"<CR>
-    nmap <C-P> :Gpull<CR>    
+    nmap <C-p> :Gpush<CR>
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
     
