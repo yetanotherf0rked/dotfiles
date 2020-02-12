@@ -13,13 +13,11 @@ set smarttab
 set cindent
 
 " Display & format
-set number
-set relativenumber
+set number relativenumber
 set textwidth=80
 set wrapmargin=2
 set showmatch
 set showmode
-set cursorline
 
 " Search
 set hlsearch
@@ -44,6 +42,12 @@ set errorbells
 
 " For NERDCommenter
 filetype plugin on
+
+" For Git-Gutter
+set updatetime=100
+highlight GitGutterAdd    guifg=#009900 ctermfg=2 
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 "Plugins
 call plug#begin('~/.vim/plugged')

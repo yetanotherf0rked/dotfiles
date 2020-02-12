@@ -482,6 +482,19 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 
+# RANGER_CD
+ranger_cd() {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" !=      "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+}
+
+# This binds Ctrl-O to ranger-cd:
+bind '"\C-o":"ranger-cd\C-m"'
+
 # PATHS
 
 export PATH="/home/massine/ext-pkg:$PATH"
@@ -500,6 +513,7 @@ alias hello="python ~/.scripts/.mygreeter.py"
 alias nc="nordvpn connect France"
 alias nd="nordvpn disconnect"
 alias ns="nordvpn status"
+alias rng="ranger_cd"
 gccc() { gcc -Wall -o "${1%.*}" "$1"; }
 hh() { "$1" -h | less; }
 
