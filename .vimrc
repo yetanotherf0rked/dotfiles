@@ -58,11 +58,11 @@ set errorbells
     highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " Mappings
-    map <C-t> :NERDTreeToggle<CR>
-    map <C-a> :Gwrite %<CR>
-    map <C-c> :Gcommit -m "
-    map <C-p> :ter git push<CR>
-    map <C-P> :Gpull<CR>    
+    nmap <C-t> :NERDTreeToggle<CR>
+    nmap <C-a> :Gwrite %<CR>
+    nmap <C-c> :Gcommit -m "
+    nmap <C-p> :ter echo "hey"<CR>
+    nmap <C-P> :Gpull<CR>    
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
     
