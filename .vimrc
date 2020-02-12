@@ -60,8 +60,8 @@ set errorbells
 " Mappings
     map <C-t> :NERDTreeToggle<CR>
     map <C-a> :Gwrite %<CR>
-    map <C-c> :Gcommit
-    map <C-p> :GPush
+    map <C-c> :Gcommit -m "
+    map <C-p> :Gpush
         
 "Plugins
 call plug#begin('~/.vim/plugged')
