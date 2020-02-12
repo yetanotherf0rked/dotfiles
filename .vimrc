@@ -60,9 +60,10 @@ set errorbells
 " Mappings
     map <C-t> :NERDTreeToggle<CR>
     map <C-a> :Gwrite %<CR>
-    map <C-c> :Gcommit -m "
-    map <C-p> :Gpush
-        
+    map <C-c> :Gcommit<CR> 
+    map <C-p> :Gpush<CR>
+    map <C-P> :Gpull<CR>    
+    
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
