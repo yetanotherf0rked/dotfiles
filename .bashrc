@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+export TERM=terminator
+
 [[ $- != *i* ]] && return
 
 colors() {
@@ -495,10 +497,6 @@ ranger_cd() {
 # This binds Ctrl-O to ranger-cd:
 bind '"\C-o":"ranger-cd\C-m"'
 
-# PATHS
-
-export PATH="/home/massine/ext-pkg:$PATH"
-
 # ALIASES
 
 alias ll="ls -lrth"
@@ -514,14 +512,14 @@ alias nc="nordvpn connect France"
 alias nd="nordvpn disconnect"
 alias ns="nordvpn status"
 alias rng="ranger_cd"
+alias ':q'="exit"
 gccc() { gcc -Wall -o "${1%.*}" "$1"; }
 hh() { "$1" -h | less; }
 
 # vim style 
-set -o vi
 
-# Launch Ranger with <C-r>
-bind -x '"\C-r": rng'
+set -o vi
+bind -x '"\C-l": clear'
 
 ### EOF ###
 
