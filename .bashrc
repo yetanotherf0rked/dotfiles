@@ -517,8 +517,12 @@ alias rng="ranger_cd"
 gccc() { gcc -Wall -o "${1%.*}" "$1"; }
 hh() { "$1" -h | less; }
 
-# HELLO
-#hello
+# vim style 
+set -o vi
+
+# Launch Ranger with <C-r>
+bind -x '"\C-r": rng'
+
 ### EOF ###
 
 
