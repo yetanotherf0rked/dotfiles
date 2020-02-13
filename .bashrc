@@ -494,9 +494,6 @@ ranger_cd() {
     rm -f -- "$temp_file"
 }
 
-# This binds Ctrl-O to ranger-cd:
-bind '"\C-o":"ranger_cd\C-m"'
-
 # ALIASES
 
 alias ll="ls -lrth"
@@ -520,5 +517,8 @@ hh() { "$1" -h | less; }
 
 set -o vi
 bind -x '"\C-l": clear'
+
+# This binds Ctrl-O to ranger-cd:
+bind -x '"\C-o":"rng"'
 
 ### EOF ###
