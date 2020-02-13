@@ -519,6 +519,6 @@ set -o vi
 bind -x '"\C-l": clear'
 
 # This binds Ctrl-O to ranger-cd:
-bind -x '"\C-o":"rng"'
+bind -x '"\C-r":"rng"'
 
 ### EOF ###
