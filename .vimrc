@@ -42,8 +42,9 @@ set errorbells
 
 " For NERDTree
     " Automatically opens NERDTree if no files are specified
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    "autocmd StdinReadPre * let s:std_in=1
+    "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
     " Automatically opens NERDTree when opening a directory
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
@@ -56,6 +57,16 @@ set errorbells
     highlight GitGutterAdd    guifg=#009900 ctermfg=2 
     highlight GitGutterChange guifg=#bbbb00 ctermfg=3
     highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" For Syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
 
 " Mappings
     nmap <C-t> :NERDTreeToggle<CR>
@@ -72,7 +83,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'lervag/vimtex'
 Plug 'valloric/youcompleteme'
 Plug 'scrooloose/syntastic'
-Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
@@ -81,4 +92,5 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
 Plug 'xuhdev/singlecompile'
+Plug 'townk/vim-autoclose'
 call plug#end()
