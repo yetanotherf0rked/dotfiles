@@ -104,8 +104,8 @@ let g:airline#extensions#tabline#enabled = 1
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
     nnoremap td  :tabclose<CR>
-    nnoremap th :tabnext<CR>
-    nnoremap tl :tabprev<CR>
+    nnoremap tl :tabnext<CR>
+    nnoremap th :tabprev<CR>
     nnoremap tn :tabnew<CR>
 "COC
 " if hidden is not set, TextEdit might fail.
