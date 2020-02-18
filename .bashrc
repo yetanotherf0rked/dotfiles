@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-export TERM=terminator
-
 [[ $- != *i* ]] && return
 
 colors() {
@@ -298,7 +296,7 @@ bash_prompt() {
 	local BACKGROUND_3=$WHITE
 	local TEXTEFFECT_3=$BOLD
 
-	local PROMT_FORMAT=$BLUE_BOLD
+	local PROMT_FORMAT=$NO_FORMAT
 
 
 	############################################################################
@@ -311,7 +309,15 @@ bash_prompt() {
 		FONT_COLOR_1=$WHITE; BACKGROUND_1=$BLUE; TEXTEFFECT_1=$BOLD
 		FONT_COLOR_2=$WHITE; BACKGROUND_2=$L_BLUE; TEXTEFFECT_2=$BOLD
 		FONT_COLOR_3=$D_GRAY; BACKGROUND_3=$WHITE; TEXTEFFECT_3=$BOLD
-		PROMT_FORMAT=$CYAN_BOLD
+		PROMT_FORMAT=$NO_FORMAT
+	fi
+
+	## CONFIGURATION: GREEN-WHITE
+	if [ "$USER" = massinealaver ]; then
+		FONT_COLOR_1=$WHITE; BACKGROUND_1=$BLUE; TEXTEFFECT_1=$BOLD
+		FONT_COLOR_2=$WHITE; BACKGROUND_2=$L_GREEN; TEXTEFFECT_2=$BOLD
+		FONT_COLOR_3=$D_GRAY; BACKGROUND_3=$WHITE; TEXTEFFECT_3=$BOLD
+		PROMT_FORMAT=$NO_FORMAT
 	fi
 
 	## CONFIGURATION: BLACK-RED
@@ -505,6 +511,7 @@ alias pc="sudo pacman -Sc"
 alias yi="yay -Syu"
 alias yc="yay -Sc"
 alias hello="python ~/.scripts/.mygreeter.py"
+alias vim="nvim"
 alias nc="nordvpn connect France"
 alias nd="nordvpn disconnect"
 alias ns="nordvpn status"
@@ -515,8 +522,8 @@ hh() { "$1" -h | less; }
 
 # vim style 
 
-set -o vi
-bind -x '"\C-l": clear'
+# set -o vi
+# bind -x '"\C-l": clear'
 
 # This binds Ctrl-O to ranger-cd:
 bind -x '"\C-r":"rng"'
