@@ -20,6 +20,7 @@
 
     " Git support
     Plug 'tpope/vim-fugitive'
+    "test"
     Plug 'airblade/vim-gitgutter'
 
     " Airline 
