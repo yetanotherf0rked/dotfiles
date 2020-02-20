@@ -10,7 +10,7 @@
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'scrooloose/nerdcommenter'
     Plug 'ryanoasis/vim-devicons'
-    
+
     " Compilers/Linters
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'honza/vim-snippets'
@@ -31,7 +31,7 @@
 
     " Surround and autoclose
     Plug 'tpope/vim-surround'
-    Plug 'townk/vim-autoclose'
+"    Plug 'townk/vim-autoclose'
 
     " Syntax highlight
     Plug 'sheerun/vim-polyglot'
@@ -41,6 +41,7 @@
     
     " Fuzzy File finder
     Plug 'junegunn/fzf'
+
     call plug#end()
 
 """"""""""""""""""""""
@@ -117,6 +118,30 @@
 
     filetype plugin on
 
+" Add spaces after comment delimiters by default
+    let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+    let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+    let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+    let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+    let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+    let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+    let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+    let g:NERDToggleCheckAllLines = 1
+
 """"""""""""""""""""""
 "     Git-Gutter     "
 """"""""""""""""""""""
@@ -151,6 +176,12 @@
 " Personal Mappings  "
 """"""""""""""""""""""
 
+    "Esc with JK
+    inoremap jk <ESC>
+    nmap <A-"> <plug>NERDCommenterToggle   
+    vmap <A-"> <plug>NERDCommenterToggle   
+    nmap <A-&> <plug>NERDCommenterSexy
+    vmap <A-&> <plug>NERDCommenterSexy
     nmap <C-t> :NERDTreeToggle<CR>
     nmap <C-a> :Gwrite %<CR>
     nmap <C-c> :Gcommit -m "
@@ -167,6 +198,21 @@
 "                                   COC                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""
+"  COC Extensions    "
+""""""""""""""""""""""
+
+    let g:coc_global_extensions = [
+        \  'coc-snippets',
+        \  'coc-python',
+        \  'coc-html',
+        \  'coc-css',
+        \  'coc-tsserver',
+        \  'coc-texlab',
+        \  'coc-json',
+        \  'coc-prettier',
+        \  'coc-pairs',
+        \]
 """"""""""""""""""""""
 "  COC Default Opt.  "
 """"""""""""""""""""""
@@ -189,11 +235,11 @@
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    " inoremap <silent><expr> <TAB>
+    "       \ pumvisible() ? "\<C-n>" :
+    "       \ <SID>check_back_space() ? "\<TAB>" :
+    "       \ coc#refresh()
+    " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use <c-space> to trigger completion.
     inoremap <silent><expr> <c-space> coc#refresh()
@@ -229,6 +275,7 @@
 
 " Remap for rename current word
     nmap <leader>rn <Plug>(coc-rename)
+    nmap <F2> <Plug>(coc-rename)
 
 " Remap for format selected region
     xmap <leader>f  <Plug>(coc-format-selected)
@@ -318,11 +365,17 @@
     imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Make <tab> used for trigger completion, snippet expand and jump like VSCode.
+    " inoremap <silent><expr> <TAB>
+    "       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    "       \ <SID>check_back_space() ? "\<TAB>" :
+    "       \ coc#refresh()
+
     inoremap <silent><expr> <TAB>
-          \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+          \ pumvisible() ? "\<C-n>" :
           \ <SID>check_back_space() ? "\<TAB>" :
           \ coc#refresh()
-
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    
 " Make <tab> used for completion confirm, add this line in the inoremap below :
     "      \ pumvisible() ? coc#_select_confirm() :
 
