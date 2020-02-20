@@ -2,8 +2,8 @@
 Dotfiles for Manjaro pc
 
 # Vim
-- added plugins
-- added mappings for Fugitive (git wrapper)
+- nvim
+- coc
 
 # Bash
 - the basics
