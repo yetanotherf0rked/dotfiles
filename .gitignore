@@ -4,3 +4,4 @@
 !.gitignore
 !.scripts/
 !.config/nvim/
+!.config/ranger/
