@@ -52,8 +52,8 @@
 " Indentation & Tabs
     set autoindent
     set smartindent
-    set tabstop=4
-    set shiftwidth=4
+    set tabstop=2
+    set shiftwidth=2
     set expandtab
     set smarttab
     set cindent
@@ -177,8 +177,8 @@
 " Personal Mappings  "
 """"""""""""""""""""""
 
-    "Esc with JK
-    inoremap jk <ESC>
+    "Esc with alt+a 
+    inoremap <A-a> <ESC>
     nmap <A-"> <plug>NERDCommenterToggle   
     vmap <A-"> <plug>NERDCommenterToggle   
     nmap <A-&> <plug>NERDCommenterSexy
