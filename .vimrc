@@ -64,7 +64,7 @@
     hi Normal guibg=NONE ctermbg=NONE
     hi SignColumn guibg=NONE ctermbg=NONE
     set cursorline
-    set number relativenumber
+    set number
     set textwidth=80
     set wrapmargin=2
     set showmatch
@@ -172,6 +172,12 @@
     let g:airline_theme='deus'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""
+"      Vimtex        "
+""""""""""""""""""""""
+     
+    let g:tex_flavor = 'latex'
 
 """"""""""""""""""""""
 " Personal Mappings  "
