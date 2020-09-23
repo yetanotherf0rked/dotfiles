@@ -329,7 +329,7 @@ bash_prompt() {
 	fi
 
 	## CONFIGURATION: RED-BLACK
-	if [ "$USER" = m ]; then
+	if [ "$USER" = root ]; then
 		FONT_COLOR_1=$WHITE; BACKGROUND_1=$RED; TEXTEFFECT_1=$BOLD
 		FONT_COLOR_2=$WHITE; BACKGROUND_2=$D_GRAY; TEXTEFFECT_2=$BOLD
 		FONT_COLOR_3=$WHITE; BACKGROUND_3=$BLACK; TEXTEFFECT_3=$BOLD
@@ -503,6 +503,8 @@ ranger_cd() {
 # ALIASES
 
 alias ll="ls -lrth"
+alias la="ls -a"
+alias lla="ls -larth"
 alias pi="sudo pacman -Syu"
 alias pd="sudo pacman -Rs"
 alias pf="sudo pacman -Qs"
@@ -517,6 +519,9 @@ alias nd="nordvpn disconnect"
 alias ns="nordvpn status"
 alias rng="ranger_cd"
 alias ':q'="exit"
+alias lp="lpass show -q --password -c"
+# Fix for Tex Live Package Manager https://wiki.archlinux.org/index.php/TeX_Live#tlmgr
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 gccc() { gcc -Wall -o "${1%.*}" "$1"; }
 hh() { "$1" -h | less; }
 
