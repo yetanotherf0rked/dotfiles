@@ -1,53 +1,77 @@
-""""""""""""""""""""""
-"      Plugins       "
-""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 #GOTO                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" #Plugins
+ 
+" #GeneralOptions   
+ 
+" #PluginOptions
+"     #NERDTree
+"     #NERDCommenter
+"     #GitGutter
+"     #Airline
+"     #CloseTag
+"     #Vimtex
 
-    call plug#begin('~/.local/share/nvim/site/plugged')
+" #PersonalMappings
+ 
+" #COCOptions
+"     #COCExtensions
+"     #COCDefault
+"     #COCListMappings
+"     #COCSnippets
+ 
+" #Miscellaneous
 
-    " Nerd Suite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                #Plugins                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.local/share/nvim/site/plugged')
+
+" Nerd Suite
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'scrooloose/nerdcommenter'
     Plug 'ryanoasis/vim-devicons'
 
-    " Compilers/Linters
+" Compilers/Linters
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'honza/vim-snippets'
     Plug 'xuhdev/singlecompile'
     Plug 'scrooloose/syntastic'
-    Plug 'lervag/vimtex'
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
-    " Git support
+" Git support
     Plug 'tpope/vim-fugitive'
-    "test"
     Plug 'airblade/vim-gitgutter'
 
-    " Airline 
+" Airline 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
-    " Themes
+" Themes
     Plug 'flazz/vim-colorschemes'
 
-    " Surround and autoclose
+" Surround and autoclose
     Plug 'tpope/vim-surround'
-"    Plug 'townk/vim-autoclose'
+    Plug 'alvan/vim-closetag' 
 
-    " Syntax highlight
+" Syntax highlight
     Plug 'sheerun/vim-polyglot'
 
-    " Open menu at launch
+" Open menu at launch
     Plug 'mhinz/vim-startify'
     
-    " Fuzzy File finder
+" Fuzzy File finder
     Plug 'junegunn/fzf'
 
-    call plug#end()
+call plug#end()
 
-""""""""""""""""""""""
-"  General Options   "
-""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            #GeneralOptions                              "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indentation & Tabs
     set autoindent
@@ -64,7 +88,7 @@
     hi Normal guibg=NONE ctermbg=NONE
     hi SignColumn guibg=NONE ctermbg=NONE
     set cursorline
-    set number
+    set number 
     set textwidth=80
     set wrapmargin=2
     set showmatch
@@ -91,8 +115,12 @@
     set visualbell
     set errorbells
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              #PluginOptions                             "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""
-"  NERDTree Options  "
+"  #NERDTreeOptions  "
 """"""""""""""""""""""
 
 " Automatically opens NERDTree if no files are specified
@@ -114,7 +142,7 @@
     " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""
-"  NERDCommenter     "
+"   #NERDCommenter   "
 """"""""""""""""""""""
 
     filetype plugin on
@@ -144,7 +172,7 @@
     let g:NERDToggleCheckAllLines = 1
 
 """"""""""""""""""""""
-"     Git-Gutter     "
+"     #GitGutter     "
 """"""""""""""""""""""
 
     set updatetime=100 " Also required by Coc
@@ -153,7 +181,7 @@
     highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 """"""""""""""""""""""
-"      Syntastic     "
+"     #Syntastic     "
 """"""""""""""""""""""
 
     set statusline+=%#warningmsg#
@@ -166,7 +194,7 @@
 "    let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""
-"      Airline       "
+"     #Airline       "
 """"""""""""""""""""""
 
     let g:airline_theme='deus'
@@ -174,39 +202,55 @@
     let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""
-"      Vimtex        "
+"    #CloseTag       "
 """"""""""""""""""""""
-     
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+    let g:closetag_filetypes = 'html,xhtml,phtml,php'
+
+""""""""""""""""""""""
+"     #Vimtex        "
+""""""""""""""""""""""
+
     let g:tex_flavor = 'latex'
 
-""""""""""""""""""""""
-" Personal Mappings  "
-""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            #PersonalMappings                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     "Esc with alt+a 
-    inoremap <A-a> <ESC>
+    "inoremap <A-a> <ESC>
+    " NERDCommenter
     nmap <A-"> <plug>NERDCommenterToggle   
     vmap <A-"> <plug>NERDCommenterToggle   
     nmap <A-&> <plug>NERDCommenterSexy
     vmap <A-&> <plug>NERDCommenterSexy
+    " NERDTree
     nmap <C-t> :NERDTreeToggle<CR>
+    " Git
     nmap <C-a> :Gwrite %<CR>
     nmap <C-c> :Gcommit -m "
     nmap <C-p> :Gpush<CR>
 "    nmap <C-l> :Gpull<CR>
+    " SimpleCompile
     nmap <F9> :SCCompile<cr>
     nmap <F10> :SCCompileRun<cr>     
+    " Tab Navigation
     nnoremap td  :tabclose<CR>
     nnoremap tl :tabnext<CR>
     nnoremap th :tabprev<CR>
     nnoremap tn :tabnew<CR>
+    " Make Session
+    nnoremap <C-s> :mks 
+    nnoremap <C-o> :session 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                   COC                                   "
+"                             #COCOptions                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""
-"  COC Extensions    "
+"  #COCExtensions    "
 """"""""""""""""""""""
 
     let g:coc_global_extensions = [
@@ -221,7 +265,7 @@
         \  'coc-pairs',
         \]
 """"""""""""""""""""""
-"  COC Default Opt.  "
+"    #COCDefault     "
 """"""""""""""""""""""
 
 " if hidden is not set, TextEdit might fail.
@@ -332,7 +376,7 @@
     let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 """"""""""""""""""""""
-"  CocList Mappings  "
+"  #COCListMappings  "
 """"""""""""""""""""""
 
 " Show all diagnostics
@@ -353,7 +397,7 @@
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 """"""""""""""""""""""
-"  COC Snippets Opt. "
+"     #COCSnippets   "
 """"""""""""""""""""""
 
 " Use <C-l> for trigger snippet expand.
@@ -393,8 +437,8 @@
 
     let g:coc_snippet_next = '<tab>'
 
-""""""""""""""""""""""
-"  Miscellaneous     "
-""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            #Miscellaneous                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     autocmd FileType json syntax match Comment +\/\/.\+$+
