@@ -1,7 +1,7 @@
 # for a pc (archlinux)
 
 ## installing aur
-see [@aur](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/)
+see [@yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/)
 ```
 sudo pacman -Syu git
 sudo git clone https://aur.archlinux.org/yay-git.git /opt
