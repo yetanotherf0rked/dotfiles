@@ -61,6 +61,6 @@ pip install neovim pynvim
 npm install neovim
 ```
 
-#### start nvim, ignore errors, type :PlugInstall
-#### restart nvim, wait for CoC to install modules
-#### restart nvim, everything sould be okay now, type :checkhealth to be sure
+- start nvim, ignore errors, type :PlugInstall
+- restart nvim, wait for CoC to install modules
+- restart nvim, everything sould be okay now, type :checkhealth to be sure
