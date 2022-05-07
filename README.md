@@ -1,66 +1,70 @@
-# for a pc (archlinux)
+# f0rked's dotfiles
 
-## installing aur
-see [@yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/)
-```
-sudo pacman -Syu git
-sudo git clone https://aur.archlinux.org/yay-git.git /opt
-sudo chown -R massine:massine /opt/yay-git
-cd /opt/yay-git
-makepkg -si
-```
+## Personal config
 
-## installing zsh/ohmysh/powerlevel10K (for user: massine)
-see [@zsh](https://wiki.archlinux.org/index.php/zsh) | [@ohmyzsh](https://ohmyz.sh/#install) | [@powerlevel10k](https://ohmyz.sh/#install)
-
-```
-cd
-sudo pacman -Syu zsh git curl
-sudo usermod --shell /bin/zsh massine
-$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-cp .zshrc ~/.
-cp .alias.zsh ~/.
+### AUR
+```bash
+$ sudo pacman -Syu wget git
+$ sudo git clone https://aur.archlinux.org/yay-git.git /opt
+$ sudo chown -R $USER:$USER /opt/yay-git
+$ cd /opt/yay-git
+$ makepkg -si
 ```
 
-## font used
-see [@nerdfonts/firacode](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode)
-```
-git clone https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/ nerd-fonts/patched-fonts/FiraCode/Regular/complete/Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf 
-cp Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf ~/.local/share/fonts/
+## Fira Code Font
+```bash
+$ wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
+$ cp Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf $HOME/.local/share/fonts/
 fc-cache
 ```
 
-## terminator
-see [@terminator](https://wiki.archlinux.org/index.php/Terminator)
+### zsh/ohmysh/powerlevel10K
+```bash
+$ sudo pacman -Syu zsh curl
+$ sudo usermod --shell /bin/zsh $USER
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+$ cp zsh/.zshrc zsh/.alias.zsh  $HOME/
 ```
-sudo pacman -Syu terminator
-cp .config/terminator ~/.config/
+
+## terminator
+```bash
+$ sudo pacman -Syu terminator
+$ cp terminator/config $HOME/.config/terminator/
 ```
 
 ## neovim
-see [@neovim](https://wiki.archlinux.org/index.php/neovim)
-```
-sudo pacman -Syu neovim
-mkdir ~/.config/neovim
-cp init.vim ~/.config/neovim
+```bash
+$ sudo pacman -Syu neovim
+$ mkdir $HOME/.config/nvim
+$ cp nvim/init.vim $HOME/.config/nvim
 ```
 
 ### vim-plug
-see [@vim-plug](https://github.com/junegunn/vim-plug#neovim)
-```
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+```bash
+$ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-### CoC
-see [@coc.nvim](https://github.com/neoclide/coc.nvim#quick-start)
-```
-sudo pacman -Syu nodejs npm
-pip install neovim pynvim
-npm install neovim
-```
-
 - start nvim, ignore errors, type :PlugInstall
-- restart nvim, wait for CoC to install modules
-- restart nvim, everything sould be okay now, type :checkhealth to be sure
+
+## Arch Attack
+To set up [Black Arch Repository](https://blackarch.org/downloads.html#install-repo)
+```bash
+# Run https://blackarch.org/strap.sh as root and follow the instructions.
+
+$ curl -O https://blackarch.org/strap.sh
+# Verify the SHA1 sum
+
+$ echo 8bfe5a569ba7d3b055077a4e5ceada94119cccef strap.sh | sha1sum -c
+# Set execute bit
+
+$ chmod +x strap.sh
+# Run strap.sh
+
+$ sudo ./strap.sh
+# Enable multilib following https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib and run:
+
+# Update and install some tools
+$ sudo pacman -Syu android-apktool angr armitage burpsuite ffuf gitleaks gobuster pwntools python-minidump ghidra radare2 rz-cutter
+```
