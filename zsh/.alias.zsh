@@ -1,5 +1,4 @@
 # Default 
-
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
@@ -22,15 +21,9 @@ alias vim="nvim"
 alias vi="nvim"
 
 # Nordvpn
-alias nc="nordvpn connect France"
+alias nconn="nordvpn connect France"
 alias nd="nordvpn disconnect"
 alias ns="nordvpn status"
-
-# Ranger
-alias rng="ranger_cd"
-
-# Lastpass
-alias lp="lpass show -q --password -c"    # Fetches for a password
 
 # Misc
 alias ':q'="exit"
@@ -53,10 +46,17 @@ alias sclt='systemctl list-timers'
 alias scc='systemctl cat'
 alias scie='systemctl is-enabled'
 
-# Server
-alias ovh='ssh centos@146.59.150.180'
-
 # Useful functions
+
+ranger_cd() {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+} 
+bindkey -s '^O' 'ranger_cd\n'
 
 ex  () # Archive Extractor
 {
